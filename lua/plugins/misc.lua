@@ -41,4 +41,8 @@ return {
       require("colorizer").setup()
     end,
   },
+  {
+    -- Comment out
+    "numToStr/Comment.nvim",
+  },
 }
