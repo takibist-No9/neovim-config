@@ -23,7 +23,10 @@ return {
 
     local sources = {
       diagnostics.checkmake,
-      formatting.prettier.with { filetypes = { "html", "json", "yaml", "markdown", "typescript", "typescriptreact" } },
+      formatting.prettier.with {
+        filetypes = { "html", "json", "yaml", "markdown", "typescript", "typescriptreact" },
+        extra_args = { "--tab-width", "2", "--no-tabs" },
+      },
       formatting.stylua,
       formatting.shfmt.with { args = { "-i", "2" } },
     }
