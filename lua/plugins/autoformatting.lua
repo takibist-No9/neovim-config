@@ -13,7 +13,6 @@ return {
     require("mason-null-ls").setup {
       ensure_installed = {
         "prettier", -- ts/js formatter
-        "stylua", -- lua formatter
         "eslint_d", -- ts/js linter
         "shfmt", -- Shell formatter
         "checkmake", -- linter for Makefiles
@@ -29,6 +28,8 @@ return {
       },
       formatting.stylua,
       formatting.shfmt.with { args = { "-i", "2" } },
+      require("none-ls.formatting.ruff").with { extra_args = { "--extend-select", "I" } },
+      require "none-ls.formatting.ruff_format",
     }
 
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -37,7 +38,7 @@ return {
       sources = sources,
       -- you can reuse a shared lspconfig on_attach callback here
       on_attach = function(client, bufnr)
-        if client.supports_method "textDocument/formatting" then
+        if client:supports_method "textDocument/formatting" then
           vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
