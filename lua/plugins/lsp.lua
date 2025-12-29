@@ -140,15 +140,6 @@ return {
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
           end, "[T]oggle Inlay [H]ints")
         end
-
-        -- Settings for eslint
-        if client and client.name == "eslint" then
-          -- 保存時にESLintのフォーマットを実行
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = event.buf,
-            command = "EslintFixAll",
-          })
-        end
       end,
     })
 
