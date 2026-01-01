@@ -24,7 +24,7 @@ return {
       diagnostics.checkmake,
       formatting.prettier.with {
         filetypes = { "html", "json", "yaml", "markdown", "typescript", "typescriptreact" },
-        extra_args = { "--tab-width", "2", "--no-tabs" },
+        extra_args = { "--tab-width", "2", "--no-tabs", "--single-quote" },
       },
       formatting.stylua,
       formatting.shfmt.with { args = { "-i", "2" } },
