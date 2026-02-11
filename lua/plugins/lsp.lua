@@ -188,9 +188,7 @@ return {
       rust_analyzer = {
         settings = {
           ["rust-analyzer"] = {
-            checkOnSave = {
-              command = "check",
-            },
+            checkOnSave = true,
           },
         },
       },
