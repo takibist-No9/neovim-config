@@ -131,6 +131,18 @@ return {
           })
         end
 
+        -- Format on save for LSP clients that support formatting and aren't handled by none-ls (e.g. rust_analyzer)
+        if client and client.name == "rust_analyzer" and client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
+          local format_augroup = vim.api.nvim_create_augroup("lsp-format-on-save", { clear = false })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = format_augroup,
+            buffer = event.buf,
+            callback = function()
+              vim.lsp.buf.format { async = false, id = client.id }
+            end,
+          })
+        end
+
         -- The following code creates a keymap to toggle inlay hints in your
         -- code, if the language server you are using supports them
         --
