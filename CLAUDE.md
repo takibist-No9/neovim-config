@@ -24,7 +24,7 @@ init.lua
 ## Key Plugin Stack
 
 - **LSP**: `nvim-lspconfig` + `mason.nvim` + `mason-lspconfig` + `mason-tool-installer` — servers configured in `lsp.lua`
-  - Rust: `rust_analyzer` with explicit `checkOnSave` enabled (file watcher is disabled globally, so this is required for diagnostics to refresh on save)
+  - Rust: `rust_analyzer` with `checkOnSave` (`cargo check` on save for diagnostics), formatting via rustfmt
   - JS/TS: `ts_ls`, `eslint`
   - Web: `html`, `cssls`, `tailwindcss`
   - Other: `dockerls`, `sqlls`, `jsonls`, `yamlls`, `lua_ls`
@@ -44,7 +44,7 @@ init.lua
 
 ## Known Quirks
 
-- **File watcher is disabled globally** (`didChangeWatchedFiles` disabled on all clients). LSP servers that rely on file watching for diagnostics refresh need explicit `checkOnSave` configuration (e.g. `rust_analyzer`).
+- **Rust diagnostics refresh on save**: `rust_analyzer` runs `cargo check` on save to update diagnostics. If diagnostics get stuck, `:LspRestart` resolves it.
 
 ## Useful Commands
 
