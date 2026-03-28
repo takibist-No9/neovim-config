@@ -44,7 +44,7 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.format { async = false }
+              vim.lsp.buf.format { async = false, filter = function(c) return c.name == "null-ls" end }
             end,
           })
         end

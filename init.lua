@@ -1,3 +1,5 @@
+vim.lsp.set_log_level("ERROR")
+
 require "core.options"
 require "core.keymaps"
 require "core.snippets"
