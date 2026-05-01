@@ -133,12 +133,15 @@ return {
 
         -- Format on save for LSP clients that support formatting and aren't handled by none-ls (e.g. rust_analyzer)
         if client and client.name == "rust_analyzer" and client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
-          local format_augroup = vim.api.nvim_create_augroup("lsp-format-on-save", { clear = false })
+          local format_augroup = vim.api.nvim_create_augroup("lsp-format-on-save-" .. event.buf, { clear = true })
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = format_augroup,
             buffer = event.buf,
             callback = function()
-              vim.lsp.buf.format { async = false, id = client.id }
+              vim.lsp.buf.format {
+                async = false,
+                filter = function(c) return c.name == "rust_analyzer" end,
+              }
             end,
           })
         end
