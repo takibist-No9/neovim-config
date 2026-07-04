@@ -72,6 +72,9 @@ vim.keymap.set("v", ">", ">gv", opts)
 -- Keep last yanked when pasting
 -- vim.keymap.set("v", "p", '"_dP', opts)
 
+-- :lr as a shorthand for :LspRestart
+vim.cmd("cnoreabbrev lr LspRestart")
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", function()
   vim.diagnostic.jump { count = -1, float = true }
