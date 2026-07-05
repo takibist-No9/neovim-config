@@ -27,11 +27,17 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = "󰌵 ",
     },
   },
-  -- Make diagnostic background transparent
-  on_ready = function()
+}
+
+-- Make diagnostic virtual text background transparent (re-applied on colorscheme change)
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("DiagnosticTransparentBg", { clear = true }),
+  pattern = "*",
+  callback = function()
     vim.cmd "highlight DiagnosticVirtualText guibg=NONE"
   end,
-}
+})
+vim.cmd "highlight DiagnosticVirtualText guibg=NONE"
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })

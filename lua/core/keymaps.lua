@@ -73,7 +73,7 @@ vim.keymap.set("v", ">", ">gv", opts)
 -- vim.keymap.set("v", "p", '"_dP', opts)
 
 -- :lr as a shorthand for :LspRestart
-vim.cmd("cnoreabbrev lr LspRestart")
+vim.cmd "cnoreabbrev lr LspRestart"
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", function()
