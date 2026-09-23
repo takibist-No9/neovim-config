@@ -174,6 +174,8 @@ return {
       -- gopls = {},
       -- pyright = {},
       rust_analyzer = {
+        -- Neovim logs all server stderr as ERROR, so suppress rust-analyzer's WARN spam at the source
+        cmd_env = { RA_LOG = "error" },
         settings = {
           ["rust-analyzer"] = {
             checkOnSave = true,
