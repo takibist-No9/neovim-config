@@ -72,8 +72,8 @@ vim.keymap.set("v", ">", ">gv", opts)
 -- Keep last yanked when pasting
 -- vim.keymap.set("v", "p", '"_dP', opts)
 
--- :lr as a shorthand for :LspRestart
-vim.cmd "cnoreabbrev lr LspRestart"
+-- :lr as a shorthand for :lsp restart (Neovim 0.12 built-in; lspconfig no longer defines :LspRestart)
+vim.cmd "cnoreabbrev lr lsp restart"
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", function()

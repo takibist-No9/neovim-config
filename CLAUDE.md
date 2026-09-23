@@ -44,7 +44,7 @@ init.lua
 
 ## Known Quirks
 
-- **Rust diagnostics refresh on save**: `rust_analyzer` runs `cargo check` on save to update diagnostics. If diagnostics get stuck, `:LspRestart` resolves it.
+- **Rust diagnostics refresh on save**: `rust_analyzer` runs `cargo check` on save to update diagnostics. If diagnostics get stuck, `:lsp restart` (or `:lr`) resolves it.
 
 ## Useful Commands
 
@@ -59,7 +59,7 @@ stylua lua/
 :Lazy update
 
 # Check LSP server status
-:LspInfo
+:checkhealth vim.lsp
 
 # Install/manage LSP servers and tools
 :Mason
